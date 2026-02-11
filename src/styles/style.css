@@ -1,3 +1,5 @@
+@import "./fonts.css";
+
 @layer reset {
   *,
   *::before,
@@ -70,4 +72,151 @@
   select {
     font: inherit;
   }
+
+  img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+}
+
+:root {
+  --color-bg: rgb(196, 196, 176);
+  --color-text: #000;
+  --font-primary: "Protage", sans-serif;
+  --font-display: "Glasgow Grotesk", sans-serif;
+  --width-wrapper: 1320px;
+  --height-header: 96px;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, var(--width-wrapper)) minmax(1rem, 1fr);
+
+  & > * {
+    grid-column: 2 / 3;
+  }
+}
+
+a {
+  font-size: clamp(0.85rem, 2vw, 1.25rem);
+}
+
+.site-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 100%;
+  padding-block: 2rem;
+}
+
+.nav-items {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.site-container {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: 1fr;
+  block-size: calc(100dvh - var(--height-header));
+}
+
+/* ITEMS */
+.items {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+  display: flex;
+  align-items: start;
+  padding-top: 4rem;
+
+  width: 100vw;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 980px;
+  z-index: 2;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex: 0 0 calc(100% / 6);
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  & p {
+    line-height: 1.1;
+  }
+}
+
+.item[data-main] {
+  flex: 0 0 calc(100% / 3.5);
+}
+
+.item-img {
+  flex: 1;
+  overflow: hidden;
+  aspect-ratio: 0.8;
+}
+
+/* HEADING */
+.heading {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  height: fit-content;
+  align-self: end;
+  width: max-content;
+  z-index: 1;
+}
+
+.heading-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 15vw, 14rem);
+  text-transform: uppercase;
+  overflow: hidden;
+  line-height: 100%;
+}
+
+.letter {
+  display: inline-block;
+}
+
+.heading,
+.letter {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
