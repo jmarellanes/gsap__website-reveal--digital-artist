@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Glasgow Grotesk";
+  src:
+    local("Glasgow Grotesk"),
+    url("../assets/fonts/glasgow-grotesk.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Protage";
+  src:
+    local("Protage"),
+    url("../assets/fonts/protage.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

@@ -4,21 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="author" content="Jose Arellane" />
+    <meta name="author" content="Jose Arellanes" />
 
     <title>Title Description Here</title>
     <meta name="description" content="Site Description Here" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="src/assets/fonts/glasgow-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="src/assets/fonts/protage.woff2" as="font" type="font/woff2" crossorigin />
 
     <link rel="stylesheet" href="src/styles/style.css" />
     <script defer src="src/scripts/main.js" type="module"></script>
   </head>
 
   <body>
-    <p>MY Website</p>
+    <nav class="site-nav wrapper">
+      <div class="site-nav__wrapper">
+        <div class="logo">
+          <a href="#">Nork Wood</a>
+        </div>
+
+        <div class="nav-items">
+          <a href="#">Home</a>
+          <a href="#">Info</a>
+          <a href="#">Products</a>
+          <a href="#">Shop</a>
+        </div>
+
+        <div class="contact">
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="wrapper">
+      <div class="site-container">
+        <div class="items"></div>
+
+        <div class="heading">
+          <div class="heading-item heading-item-1">
+            <div class="heading-title">nork</div>
+          </div>
+
+          <div class="heading-item heading-item-2">
+            <div class="heading-title">wood</div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
