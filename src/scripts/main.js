@@ -17,6 +17,8 @@ const heading = document.querySelector(".heading");
 const textWrapper = document.querySelectorAll(".heading-item");
 const centerPosition = { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50 };
 
+let shiftAmount = 0;
+
 function centerHeadingGap() {
   const word1 = document.querySelector(".heading-item-1");
   const word2 = document.querySelector(".heading-item-2");
@@ -24,12 +26,16 @@ function centerHeadingGap() {
   const w1 = word1.getBoundingClientRect().width;
   const w2 = word2.getBoundingClientRect().width;
 
-  const shiftAmount = (w2 - w1) / 2;
+  shiftAmount = (w2 - w1) / 2;
+}
 
-  gsap.set(heading, {
-    x: shiftAmount,
-    xPercent: -50,
-  });
+function centerItem(container, item) {
+  const containerRect = container.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+  const itemCenter = itemRect.left + itemRect.width / 2;
+  const containerCenter = containerRect.left + containerRect.width / 2;
+
+  container.scrollLeft += itemCenter - containerCenter;
 }
 
 if (header) {
@@ -146,6 +152,7 @@ tl.from(".letter", {
     {
       clipPath: "inset(50% 50% 50% 50%)",
       scale: 0.5,
+      x: -shiftAmount,
     },
     {
       clipPath: "inset(0% 0% 0% 0%)",
@@ -159,15 +166,11 @@ tl.from(".letter", {
   })
 
   .add(() => {
-    const state = Flip.getState(itemMainWrapper);
-    gsap.set(itemMainWrapper, { clearProps: "all" });
+    const target = [itemMainWrapper];
+    const state = Flip.getState(target);
+    gsap.set(target, { clearProps: "all" });
 
-    const containerRect = itemsWrapper.getBoundingClientRect();
-    const itemRect = itemMain.getBoundingClientRect();
-    const itemCenter = itemRect.left + itemRect.width / 2;
-    const containerCenter = containerRect.left + containerRect.width / 2;
-
-    itemsWrapper.scrollLeft += itemCenter - containerCenter;
+    centerItem(itemsWrapper, itemMain);
 
     Flip.from(state, {
       ease: "power3.inOut",
@@ -178,6 +181,7 @@ tl.from(".letter", {
   .to(itemMainImage, {
     scale: 1,
     ease: "power3.inOut",
+    x: 0,
     onComplete: () => {
       itemsWrapper.addEventListener("wheel", (e) => {
         if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
