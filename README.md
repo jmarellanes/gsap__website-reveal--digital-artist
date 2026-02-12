@@ -78,7 +78,7 @@ This project showcases a modern automotive landing page with advanced animations
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/jmarellanes/gsap__website-reveal--digital-artist.git
 cd starter__vanilla
 ```
 
