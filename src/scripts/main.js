@@ -3,6 +3,20 @@ import { Flip } from "gsap/Flip";
 
 gsap.registerPlugin(Flip);
 
+const items = [
+  { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: "./src/assets/images/image-1.webp" },
+  { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: "./src/assets/images/image-2.webp" },
+  { title: "Ferrari F40", type: "[Twin-Turbo Icon]", img: "./src/assets/images/image-3.webp", main: true },
+  { title: "Porshe 911", type: "[Rear-Engine Precision]", img: "./src/assets/images/image-4.webp" },
+  { title: "Audi R8", type: "[V10 Quattro]", img: "./src/assets/images/image-5.webp" },
+  { title: "Lamborghini Diablo", type: "[V12 Brutality]", img: "./src/assets/images/image-6.webp" },
+];
+const header = document.querySelector(".site-nav");
+const itemsWrapper = document.querySelector(".items");
+const heading = document.querySelector(".heading");
+const textWrapper = document.querySelectorAll(".heading-item");
+const centerPosition = { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50 };
+
 function centerHeadingGap() {
   const word1 = document.querySelector(".heading-item-1");
   const word2 = document.querySelector(".heading-item-2");
@@ -17,21 +31,6 @@ function centerHeadingGap() {
     xPercent: -50,
   });
 }
-
-const items = [
-  { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: "./src/assets/images/image-1.webp" },
-  { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: "./src/assets/images/image-2.webp" },
-  { title: "Ferrari F40", type: "[Twin-Turbo Icon]", img: "./src/assets/images/image-3.webp", main: true },
-  { title: "Porshe 911", type: "[Rear-Engine Precision]", img: "./src/assets/images/image-4.webp" },
-  { title: "Audi R8", type: "[V10 Quattro]", img: "./src/assets/images/image-5.webp" },
-  { title: "Lamborghini Diablo", type: "[V12 Brutality]", img: "./src/assets/images/image-6.webp" },
-];
-
-const header = document.querySelector(".site-nav");
-const itemsWrapper = document.querySelector(".items");
-const heading = document.querySelector(".heading");
-const textWrapper = document.querySelectorAll(".heading-item");
-const centerPosition = { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50 };
 
 if (header) {
   const observer = new ResizeObserver((entries) => {
@@ -75,15 +74,27 @@ if (itemsWrapper) {
 };
 
 if (textWrapper.length > 0) {
+  let maxChars = 0;
+
+  textWrapper.forEach((word) => {
+    const text = word.textContent.trim();
+
+    text.split(" ").forEach((wrd) => {
+      if (wrd.length > maxChars)
+        maxChars = wrd.length;
+    });
+  });
+
   textWrapper.forEach((word, index) => {
     const text = word.textContent.trim();
     word.innerHTML = "";
 
-    text.split(" ").forEach((word) => {
+    text.split(" ").forEach((wordText) => {
       const wordSpan = document.createElement("p");
       wordSpan.classList.add("heading-title");
+      wordSpan.style.setProperty("--char-count", maxChars);
 
-      wordSpan.innerHTML = word
+      wordSpan.innerHTML = wordText
         .split("")
         .map((char) => {
           return `<span class='letter'>${char}</span>`;
