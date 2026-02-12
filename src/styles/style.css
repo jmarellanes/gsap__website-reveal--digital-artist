@@ -178,6 +178,8 @@ a {
 
   & p {
     line-height: 1.1;
+    margin-right: 1rem;
+    white-space: nowrap;
   }
 }
 
@@ -204,7 +206,7 @@ a {
 
 .heading-title {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 15vw, 14rem);
+  font-size: clamp(3.5rem, 14vw, 14rem);
   text-transform: uppercase;
   overflow: hidden;
   line-height: 100%;
