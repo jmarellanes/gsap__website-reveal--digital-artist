@@ -71,6 +71,7 @@ if (itemsWrapper) {
   });
 
   itemsWrapper.innerHTML = array.join("");
+  itemsWrapper.scrollLeft = 0;
 };
 
 if (textWrapper.length > 0) {
@@ -153,9 +154,20 @@ tl.from(".letter", {
   )
 
   .add("contentToPosition")
+  .call(() => {
+    itemMain.classList.add("active");
+  })
+
   .add(() => {
     const state = Flip.getState(itemMainWrapper);
     gsap.set(itemMainWrapper, { clearProps: "all" });
+
+    const containerRect = itemsWrapper.getBoundingClientRect();
+    const itemRect = itemMain.getBoundingClientRect();
+    const itemCenter = itemRect.left + itemRect.width / 2;
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    itemsWrapper.scrollLeft += itemCenter - containerCenter;
 
     Flip.from(state, {
       ease: "power3.inOut",
@@ -166,6 +178,14 @@ tl.from(".letter", {
   .to(itemMainImage, {
     scale: 1,
     ease: "power3.inOut",
+    onComplete: () => {
+      itemsWrapper.addEventListener("wheel", (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          itemsWrapper.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
+    },
   }, "contentToPosition")
 
   .add(() => {
@@ -194,3 +214,5 @@ tl.from(".letter", {
   .to(header, {
     opacity: 1,
   }, "contentToPosition+=0.6");
+
+document.addEventListener("click", () => tl.play());
