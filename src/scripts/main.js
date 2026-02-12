@@ -3,6 +3,7 @@ import { Flip } from "gsap/Flip";
 
 gsap.registerPlugin(Flip);
 
+let shiftAmount = 0;
 const items = [
   { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: "./src/assets/images/image-1.webp" },
   { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: "./src/assets/images/image-2.webp" },
@@ -17,11 +18,12 @@ const heading = document.querySelector(".heading");
 const textWrapper = document.querySelectorAll(".heading-item");
 const centerPosition = { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50 };
 
-let shiftAmount = 0;
-
 function centerHeadingGap() {
   const word1 = document.querySelector(".heading-item-1");
   const word2 = document.querySelector(".heading-item-2");
+
+  if (!word1 || !word2)
+    return 0;
 
   const w1 = word1.getBoundingClientRect().width;
   const w2 = word2.getBoundingClientRect().width;
@@ -36,6 +38,15 @@ function centerItem(container, item) {
   const containerCenter = containerRect.left + containerRect.width / 2;
 
   container.scrollLeft += itemCenter - containerCenter;
+}
+
+function enableHorizontalScroll() {
+  itemsWrapper.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      itemsWrapper.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
 }
 
 if (header) {
@@ -182,14 +193,7 @@ tl.from(".letter", {
     scale: 1,
     ease: "power3.inOut",
     x: 0,
-    onComplete: () => {
-      itemsWrapper.addEventListener("wheel", (e) => {
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          itemsWrapper.scrollLeft += e.deltaY;
-          e.preventDefault();
-        }
-      }, { passive: false });
-    },
+    onComplete: enableHorizontalScroll,
   }, "contentToPosition")
 
   .add(() => {
