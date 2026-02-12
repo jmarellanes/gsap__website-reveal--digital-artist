@@ -5,18 +5,22 @@ gsap.registerPlugin(Flip);
 
 let shiftAmount = 0;
 const items = [
-  { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: "./src/assets/images/image-1.webp" },
-  { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: "./src/assets/images/image-2.webp" },
-  { title: "Ferrari F40", type: "[Twin-Turbo Icon]", img: "./src/assets/images/image-3.webp", main: true },
-  { title: "Porshe 911", type: "[Rear-Engine Precision]", img: "./src/assets/images/image-4.webp" },
-  { title: "Audi R8", type: "[V10 Quattro]", img: "./src/assets/images/image-5.webp" },
-  { title: "Lamborghini Diablo", type: "[V12 Brutality]", img: "./src/assets/images/image-6.webp" },
+  { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: getImageUrl("image-1.webp") },
+  { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: getImageUrl("image-2.webp") },
+  { title: "Ferrari F40", type: "[Twin-Turbo Icon]", img: getImageUrl("image-3.webp"), main: true },
+  { title: "Porshe 911", type: "[Rear-Engine Precision]", img: getImageUrl("image-4.webp") },
+  { title: "Audi R8", type: "[V10 Quattro]", img: getImageUrl("image-5.webp") },
+  { title: "Lamborghini Diablo", type: "[V12 Brutality]", img: getImageUrl("image-6.webp") },
 ];
 const header = document.querySelector(".site-nav");
 const itemsWrapper = document.querySelector(".items");
 const heading = document.querySelector(".heading");
 const textWrapper = document.querySelectorAll(".heading-item");
 const centerPosition = { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50 };
+
+function getImageUrl(name) {
+  return new URL(`../assets/images/${name}`, import.meta.url).href;
+};
 
 function centerHeadingGap() {
   const word1 = document.querySelector(".heading-item-1");
@@ -44,6 +48,7 @@ function enableHorizontalScroll() {
   itemsWrapper.addEventListener("wheel", (e) => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       itemsWrapper.scrollLeft += e.deltaY;
+
       e.preventDefault();
     }
   }, { passive: false });
