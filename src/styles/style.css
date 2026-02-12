@@ -97,12 +97,12 @@
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: var(--font-primary);
   background-color: var(--color-bg);
+  font-family: var(--font-primary);
+  height: 100%;
   letter-spacing: 1px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .wrapper {
@@ -119,56 +119,52 @@ a {
 }
 
 .site-nav__wrapper {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
   inline-size: 100%;
+  justify-content: space-between;
   padding-block: 2rem;
 }
 
 .nav-items {
+  align-items: center;
   display: flex;
   gap: 1em;
-  align-items: center;
 }
 
 .site-container {
-  grid-column: 1 / -1;
-
+  block-size: calc(100dvh - var(--height-header));
   display: grid;
+  grid-column: 1 / -1;
   grid-template-columns: subgrid;
   grid-template-rows: 1fr;
-  block-size: calc(100dvh - var(--height-header));
 }
 
 /* ITEMS */
 .items {
+  align-items: start;
+  display: flex;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-
-  display: flex;
-  align-items: start;
-  padding-top: 4rem;
-
-  width: 100vw;
-
+  min-width: 980px;
   overflow-x: auto;
   overflow-y: hidden;
-  min-width: 980px;
+  padding-top: 4rem;
+  scrollbar-width: none;
+  width: 100vw;
   z-index: 2;
 
-  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
 .item {
-  flex: 0 0 calc(100% / 5);
   display: flex;
-  height: auto;
   flex-direction: column;
+  flex: 0 0 calc(100% / 5);
   gap: 0.5rem;
+  height: auto;
 }
 
 .item-copy {
@@ -192,19 +188,19 @@ a {
 }
 
 .item-img {
-  flex: 1;
-  overflow: hidden;
   aspect-ratio: 0.8;
+  flex: 1;
   min-height: 300px;
+  overflow: hidden;
 }
 
 /* HEADING */
 .heading {
+  align-self: end;
+  display: flex;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  display: flex;
   height: fit-content;
-  align-self: end;
   justify-self: center;
   width: max-content;
   z-index: 1;
@@ -213,10 +209,10 @@ a {
 .heading-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, calc(80vw / var(--char-count, 8)), 14rem);
-  text-transform: uppercase;
-  overflow: hidden;
-  line-height: 100%;
   letter-spacing: -5px;
+  line-height: 100%;
+  overflow: hidden;
+  text-transform: uppercase;
 }
 
 .letter {
@@ -225,7 +221,7 @@ a {
 
 .heading,
 .letter {
-  will-change: transform, opacity;
   backface-visibility: hidden;
   transform: translateZ(0);
+  will-change: transform, opacity;
 }
