@@ -126,6 +126,7 @@ const tl = gsap.timeline({ pause: true });
 tl.from(".letter", {
   yPercent: 100,
   stagger: 0.05,
+  ease: "power3.inOut",
 })
 
   .add("letterMove")
