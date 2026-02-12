@@ -146,16 +146,14 @@ a {
   display: flex;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-  min-width: 980px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-top: 4rem;
-  scrollbar-width: none;
-  width: 100vw;
+  padding-top: 2rem;
+  width: 100%;
   z-index: 2;
 
-  &::-webkit-scrollbar {
-    display: none;
+  @media (width > 800px) {
+    padding-top: 4rem;
   }
 }
 
@@ -184,14 +182,23 @@ a {
 }
 
 .item[data-main] {
-  flex: 0 0 calc(100% / 3.5);
+  flex: 0 0 calc(100% / 3.3);
 }
 
 .item-img {
   aspect-ratio: 0.8;
   flex: 1;
-  min-height: 300px;
+  min-height: 240px;
+  min-width: 204px;
   overflow: hidden;
+}
+
+.item[data-main].active {
+  min-width: 272px;
+
+  @media (width > 800px) {
+    min-width: 380px;
+  }
 }
 
 /* HEADING */
