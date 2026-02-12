@@ -1,8 +1,9 @@
 {
-  "name": "gsap__website-reveal--digital-artist",
+  "name": "gsap-website-reveal-digital-artist",
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "description": "Apex Motors | Cinematic GSAP Flip Intro",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
