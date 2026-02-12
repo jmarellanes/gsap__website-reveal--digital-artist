@@ -19,12 +19,12 @@ function centerHeadingGap() {
 }
 
 const items = [
-  { title: "1. Lorem ipsum", type: "Client", img: "./src/assets/images/image-1.webp" },
-  { title: "2. Ipsum Lorem", type: "Client", img: "./src/assets/images/image-1.webp" },
-  { title: "3. Ipsum Lorem", type: "Client", img: "./src/assets/images/image-1.webp", main: true },
-  { title: "4. Lorem Ipsum", type: "Personal", img: "./src/assets/images/image-1.webp" },
-  { title: "5. Lorem Ipsum", type: "Personal", img: "./src/assets/images/image-1.webp" },
-  { title: "6. Lorem Ipsum", type: "Personal", img: "./src/assets/images/image-1.webp" },
+  { title: "Shelby Cobra", type: "[427 V8 Muscle]", img: "./src/assets/images/image-1.webp" },
+  { title: "Ferrari Testarossa", type: "[Flat-12 Legend]", img: "./src/assets/images/image-2.webp" },
+  { title: "Ferrari F40", type: "[Twin-Turbo Icon]", img: "./src/assets/images/image-3.webp", main: true },
+  { title: "Porshe 911", type: "[Rear-Engine Precision]", img: "./src/assets/images/image-4.webp" },
+  { title: "Audi R8", type: "[V10 Quattro]", img: "./src/assets/images/image-5.webp" },
+  { title: "Lamborghini Diablo", type: "[V12 Brutality]", img: "./src/assets/images/image-6.webp" },
 ];
 
 const header = document.querySelector(".site-nav");
