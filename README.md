@@ -79,7 +79,7 @@ This project showcases a modern automotive landing page with advanced animations
 
 ```bash
 git clone https://github.com/jmarellanes/gsap__website-reveal--digital-artist.git
-cd starter__vanilla
+cd gsap__website-reveal--digital-artist
 ```
 
 2. Install dependencies:
@@ -170,7 +170,7 @@ Edit the `items` array in `src/scripts/main.js` to change the gallery content:
 
 ```javascript
 const items = [
-  { title: "New Car Name", type: "[Engine Type]", img: "./path/to/image.webp" },
+  { title: "New Car Name", type: "[Engine Type]", img: getImageUrl("image-filename.webp") },
   // ...
 ];
 ```
