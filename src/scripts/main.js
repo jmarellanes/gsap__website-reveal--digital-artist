@@ -139,7 +139,7 @@ gsap.set(header, { opacity: 0 });
 centerHeadingGap();
 
 gsap.defaults({ duration: 1, ease: "power3.out" });
-const tl = gsap.timeline({ pause: true });
+const tl = gsap.timeline({ delay: 0.3 });
 
 tl.from(".letter", {
   yPercent: 100,
@@ -222,5 +222,3 @@ tl.from(".letter", {
   .to(header, {
     opacity: 1,
   }, "contentToPosition+=0.6");
-
-document.addEventListener("click", () => tl.play());
