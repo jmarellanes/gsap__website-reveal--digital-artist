@@ -146,8 +146,7 @@ a {
   display: flex;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   padding-top: 2rem;
   width: 100%;
   z-index: 2;
@@ -182,7 +181,7 @@ a {
 }
 
 .item[data-main] {
-  flex: 0 0 calc(100% / 3.3);
+  flex: 0 0 calc(100% / 3.4);
 }
 
 .item-img {
@@ -216,7 +215,7 @@ a {
 .heading-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, calc(80vw / var(--char-count, 8)), 14rem);
-  letter-spacing: -5px;
+  letter-spacing: -2px;
   line-height: 100%;
   overflow: hidden;
   text-transform: uppercase;
